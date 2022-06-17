@@ -3,9 +3,14 @@ import {View,Text} from "react-native";
 import SplashScreen from 'react-native-splash-screen'
 
 const App=()=>{
+
   useEffect(()=>{
-    SplashScreen.hide()
-  },[])
+    setTimeout(()=>{
+      SplashScreen.hide()
+    },5000)
+    
+  },)
+
   return(<View>
     <Text>Text</Text>
     </View>)
