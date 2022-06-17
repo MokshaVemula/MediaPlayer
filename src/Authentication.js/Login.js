@@ -34,10 +34,14 @@ const Login = () =>{
                         
                     </LinearGradient>
                     <Pressable style={styles.register}>
-                        <Text style={{color:'blue', marginRight:10, fontSize:18, fontWeight:'800'}}>Register Here</Text>
-                        <Icon name='east' size={24} style={{color:'blue'}}/>
+                        <Text style={{color:'#4286f4', marginRight:8, fontSize:18, fontWeight:'800', }}>Register Here</Text>
+                        <Icon name='east' size={24} style={{color:'#4286f4'}}/>
                     </Pressable>
-                    <Button title='Login'/>                    
+                    <Pressable style={styles.Login}>
+                        <Text style={{color:'white', marginRight:8, fontSize:24, fontWeight:'800', }}>Login</Text>
+                        <Icon name='east' size={24} style={{color:'white'}}/>
+                    </Pressable>
+                                   
                 </View>
             </LinearGradient>
         </View>
@@ -79,8 +83,6 @@ const styles = StyleSheet.create({
         height: 50,
         width:'90%',
         margin: 12,
-        //borderWidth: 4,
-        //borderColor:'yellow',
         padding: 10,
         borderRadius:20,
         color:'black',
@@ -105,7 +107,17 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'flex-end',
-        marginLeft:200
+        marginLeft:200,
+        marginBottom:40
+      },
+      Login:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'flex-end',
+        backgroundColor:'#58a63e',
+        paddingVertical:10,
+        paddingHorizontal:20,
+        borderRadius:20
       }
     
 })
