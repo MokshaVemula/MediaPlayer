@@ -2,6 +2,7 @@ import React,{useEffect} from "react";
 import {View,Text} from "react-native";
 import SplashScreen from 'react-native-splash-screen'
 
+
 const App=()=>{
 
   useEffect(()=>{
@@ -11,8 +12,10 @@ const App=()=>{
     
   },)
 
-  return(<View>
-    <Text>Text</Text>
-    </View>)
+  return(
+    <View>
+      <Text>Text</Text>
+    </View>
+  )
 }
 export default App;
