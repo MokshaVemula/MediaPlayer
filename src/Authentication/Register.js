@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import auth from '@react-native-firebase/auth';
 
 
-const Register = () =>{
+const Register = ({navigation}) =>{
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -144,7 +144,7 @@ const Register = () =>{
                         </LinearGradient>
                     </View>
                     <Pressable style={styles.register} onPress={() => navigation.navigate('Login')}>
-                        <Text style={{color:'#4286f4', marginRight:8, fontSize:18, fontWeight:'800',paddingBottom:20 }}> Login Here</Text>
+                        <Text style={{color:'#4286f4', marginRight:8, fontSize:18, fontWeight:'800',paddingBottom:20 }} onPress={()=>navigation.navigate('Login')}> Login Here</Text>
                         <Icon name='east' size={24} style={{color:'#4286f4',paddingBottom:20}}/>
                     </Pressable>
                     <LinearGradient colors={['blue', 'skyblue', '#006Db2' ]} style={styles.registerHere} start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }}>
