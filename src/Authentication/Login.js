@@ -75,8 +75,8 @@ const Login = ({navigation}) =>{
                         </View>
                         
                     </LinearGradient>
-                    <Pressable style={styles.register} >
-                        <Text style={{color:'#4286f4', marginRight:8, fontSize:18, fontWeight:'800', }} onPress={()=>navigation.navigate('Register')}>Register Here</Text>
+                    <Pressable style={styles.register} onPress={()=>navigation.navigate('Register')}>
+                        <Text style={{color:'#4286f4', marginRight:8, fontSize:18, fontWeight:'800', }}>Register Here</Text>
                         <Icon name='east' size={24} style={{color:'#4286f4'}}/>
                     </Pressable>
                     <Pressable style={styles.Login} onPress={() => signin(email, password)}>
