@@ -1,15 +1,50 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {Text, View, StyleSheet,Image, TextInput, Pressable, Button} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 const Login = () =>{
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const signin = (email, password) => {
+        if (email.length==0){
+          Alert.alert("Enter Email")
+        }else if(password.length==0){
+          Alert.alert("Enter Password")
+        }
+        else{
+          setLoading(true)
+          auth().signInWithEmailAndPassword(email, password).then(
+            function(result){
+              return(console.log(result.user))
+            }
+          ).catch(
+            function(e){
+              if (e.code==="auth/user-not-found"){
+                return(Alert.alert("In correct email"))
+              }else if(e.code==="auth/wrong-password"){
+                return(Alert.alert("The password is invalid"))
+              }else if(e.code==="auth/invalid-email"){
+                return(Alert.alert("Enter valid email"))
+    
+              }
+              else{
+                return(console.log(e.message),Alert.alert(e.mesage))
+              }
+             
+            });
+        }
+      };  
+        
+        
     return(
         <View style = {styles.container} >
             <LinearGradient colors={['red', 'yellow', 'green' ]} style={styles.linearGradient} start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }}>
                 <View style={[styles.Iconcontainer,{alignItems:'center',justifyContent:'center'}]}>
                 
                     <Image source={require('../asserts/playIcon.png')} style={styles.logoIcon}/>
+                    <Text style={{fontWeight:'bold', color:'black',fontSize:22,padding:10 }}>Login</Text>
         
                 </View>
                 <View style={[styles.textContainer,{alignItems:'center',justifyContent:'center'}]}>
@@ -19,6 +54,9 @@ const Login = () =>{
                             <TextInput 
                                 placeholder='Enter your Email' 
                                 style={styles.input}
+                                value={email}
+                                onChangeText={setEmail}
+                                keyboardType='email-address'
                             />
                         </View>
                         
@@ -29,6 +67,9 @@ const Login = () =>{
                             <TextInput 
                                 placeholder='Enter your Password' 
                                 style={styles.input}
+                                value={password}
+                                onChangeText={setPassword}
+                                secureTextEntry={true}
                             />
                         </View>
                         
@@ -37,7 +78,7 @@ const Login = () =>{
                         <Text style={{color:'#4286f4', marginRight:8, fontSize:18, fontWeight:'800', }}>Register Here</Text>
                         <Icon name='east' size={24} style={{color:'#4286f4'}}/>
                     </Pressable>
-                    <Pressable style={styles.Login}>
+                    <Pressable style={styles.Login} onPress={() => signin(email, password)}>
                         <Text style={{color:'white', marginRight:8, fontSize:24, fontWeight:'800', }}>Login</Text>
                         <Icon name='east' size={24} style={{color:'white'}}/>
                     </Pressable>

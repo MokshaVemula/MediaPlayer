@@ -1,9 +1,61 @@
-import React from 'react';
-import {Text, View, StyleSheet,Image, TextInput, Pressable, Button,TouchableWithoutFeedback, Keyboard} from 'react-native';
+import React,{useState} from 'react';
+import {Text, View, StyleSheet,Image, TextInput, Pressable, Button,TouchableWithoutFeedback, Keyboard, Alert} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import auth from '@react-native-firebase/auth';
+
 
 const Register = () =>{
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState('')
+
+    const createUser=(email, password) =>{
+        if(firstName.length==0){
+            Alert.alert('Enter user first Name')
+        }else if(lastName.length==0){
+            Alert.alert('Enter user last Name')
+        }
+        else if (email.length == 0) {
+          Alert.alert("Enter Email");
+        } else if (password.length == 0) {
+          Alert.alert("Enter Password");
+        }else if (confirmPassword.length == 0) {
+            Alert.alert("Enter confirmPassword");
+        }else if (phoneNumber.length == 0) {
+            Alert.alert("Enter phoneNumber");
+        }
+        else if (password !== confirmPassword){
+            Alert.alert("Password doesn't match")
+        }
+        else {
+          auth().createUserWithEmailAndPassword(email, password).then(
+              
+            function (result) {
+              return (console.log(result));
+             
+            }
+        
+          ).catch(
+            function (e) {
+              if (e.code === "auth/invalid-email") {
+                return (Alert.alert("Enter valid email"));
+              } else if (e.code === "auth/weak-password") {
+                return (Alert.alert("Password is short"));
+              } else if (e.code === "auth/email-already-in-use") {
+                return (Alert.alert("email-already-in-use"));
+              } else {
+                return (console.log(e.message));
+              }
+            }
+          );
+        }
+    
+    
+      }
 
     
 
@@ -13,63 +65,90 @@ const Register = () =>{
                 <View style={{alignItems:'center',justifyContent:'center'}}>
                     <Text style={styles.account}>Create Account</Text>
                     <View style={styles.textContainer}>
-                        <LinearGradient colors={['pink', 'yellow', 'pink' ]}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{width:'90%', borderRadius:30, marginBottom:20, }}>
+                        <LinearGradient colors={['purple', 'pink', 'purple', ]}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{width:'90%', borderRadius:30, marginBottom:20, }}>
                             <View style={styles.flexView}>
                                 <Icon name='person' size={34} style={{paddingLeft:20, color:'black'}}/>
                                 <TextInput 
                                     placeholder='Enter your First Name' 
                                     style={styles.input}
+                                    value={firstName}
+                                    onChangeText={setFirstName}
+                                    
                                 />
                             </View>
                             
                         </LinearGradient>
-                        <LinearGradient colors={['pink', 'yellow', 'pink' ]}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{width:'90%', borderRadius:30, marginBottom:20, }}>
+                        <LinearGradient colors={['purple', 'pink', 'purple'  ]}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{width:'90%', borderRadius:30, marginBottom:20, }}>
                             <View style={styles.flexView}>
                                 <Icon name='person' size={34} style={{paddingLeft:20, color:'black'}}/>
                                 <TextInput 
                                     placeholder='Enter your Last Name' 
                                     style={styles.input}
+                                    value={lastName}
+                                    onChangeText={setLastName}
                                 />
                             </View>
                             
                         </LinearGradient>
-                        <LinearGradient colors={['pink', 'yellow', 'pink' ]}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{width:'90%', borderRadius:30, marginBottom:20, }}>
+                        <LinearGradient colors={['purple', 'pink', 'purple' ]}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{width:'90%', borderRadius:30, marginBottom:20, }}>
                             <View style={styles.flexView}>
                                 <Icon name='email' size={34} style={{paddingLeft:20, color:'black'}}/>
                                 <TextInput 
                                     placeholder='Enter your Email' 
                                     style={styles.input}
+                                    value={email}
+                                    onChangeText={setEmail}
+                                    textContentType="emailAddress"
                                 />
                             </View>
                             
                         </LinearGradient>
-                        <LinearGradient colors={['pink', 'yellow', 'pink']}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{width:'90%', borderRadius:30, marginBottom:20}}>
+                        <LinearGradient colors={['purple', 'pink', 'purple' ]}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{width:'90%', borderRadius:30, marginBottom:20}}>
                             <View style={styles.flexView}>
                                 <Icon name='lock' size={34} style={{paddingLeft:20, color:'black'}}/>
                                 <TextInput 
                                     placeholder='Enter your Password' 
                                     style={styles.input}
+                                    value={password}
+                                    onChangeText={setPassword}
+                                    secureTextEntry
                                 />
                             </View>
                             
                         </LinearGradient>
-                        <LinearGradient colors={['pink', 'yellow', 'pink']}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{width:'90%', borderRadius:30, marginBottom:20}}>
+                        <LinearGradient colors={['purple', 'pink', 'purple' ]}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{width:'90%', borderRadius:30, marginBottom:20}}>
                             <View style={styles.flexView}>
                                 <Icon name='lock' size={34} style={{paddingLeft:20, color:'black'}}/>
                                 <TextInput 
                                     placeholder='Confirm your Password' 
                                     style={styles.input}
+                                    value={confirmPassword}
+                                    onChangeText={setConfirmPassword}
+                                    secureTextEntry
                                 />
                             </View>
                             
-                    </LinearGradient>
+                        </LinearGradient>
+                        <LinearGradient colors={['purple', 'pink', 'purple' ]}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{width:'90%', borderRadius:30, marginBottom:20}}>
+                                <View style={styles.flexView}>
+                                    <Icon name='phone' size={34} style={{paddingLeft:20, color:'black'}}/>
+                                    <TextInput 
+                                        placeholder='Enter your Number' 
+                                        style={styles.input}
+                                        value={phoneNumber}
+                                        onChangeText={setPhoneNumber}
+                                        keyboardType='numeric'
+                                    />
+                                </View>
+                                
+                        </LinearGradient>
                     </View>
                     <Pressable style={styles.register}>
                         <Text style={{color:'#4286f4', marginRight:8, fontSize:18, fontWeight:'800',paddingBottom:20 }}> Login Here</Text>
                         <Icon name='east' size={24} style={{color:'#4286f4',paddingBottom:20}}/>
                     </Pressable>
                     <LinearGradient colors={['blue', 'skyblue', '#006Db2' ]} style={styles.registerHere} start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }}>
-                        <Pressable style={styles.Login}>
+                        <Pressable style={styles.Login} onPress={()=>createUser(email,password)}>
                             <Text style={{color:'white', marginRight:8, fontSize:24, fontWeight:'800', }}>Register</Text>
                             <Icon name='east' size={24} style={{color:'white'}}/>
                         </Pressable>
@@ -164,7 +243,9 @@ const styles = StyleSheet.create({
       },
       registerHere:{
           borderRadius:20,
+          marginBottom:40
           
       }
     
 })
+
