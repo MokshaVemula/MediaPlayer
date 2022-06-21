@@ -11,9 +11,9 @@ const Register = ({navigation}) =>{
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState('')
+    const [number, setNumber] = useState('')
 
-    const createUser=(email, password) =>{
+    const createUser=async(email, password) =>{
         if(firstName.length==0){
             Alert.alert('Enter user first Name')
         }else if(lastName.length==0){
@@ -25,18 +25,16 @@ const Register = ({navigation}) =>{
           Alert.alert("Enter Password");
         }else if (confirmPassword.length == 0) {
             Alert.alert("Enter confirmPassword");
-        }else if (phoneNumber.length == 0) {
+        }else if (number.length == 0) {
             Alert.alert("Enter phoneNumber");
         }
         else if (password !== confirmPassword){
             Alert.alert("Password doesn't match")
         }
         else {
-          auth().createUserWithEmailAndPassword(email, password).then(
-              
-            function (result) {
-              return (console.log(result));
-             
+          await auth().createUserWithEmailAndPassword(email, password).then(
+            function(res){
+                res.user.updateProfile({displayName:firstName+" "+lastName,phoneNumber:number})
             }
         
           ).catch(
@@ -58,7 +56,6 @@ const Register = ({navigation}) =>{
       }
 
     
-
     return(
         <View style = {styles.container} > 
             <LinearGradient colors={['blue', 'skyblue', 'white' ]} style={styles.linearGradient} start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }}>
@@ -135,9 +132,9 @@ const Register = ({navigation}) =>{
                                     <TextInput 
                                         placeholder='Enter your Number' 
                                         style={styles.input}
-                                        value={phoneNumber}
-                                        onChangeText={setPhoneNumber}
-                                        keyboardType='numeric'
+                                        value={number}
+                                        onChangeText={setNumber}
+                                        //keyboardType='numeric'
                                     />
                                 </View>
                                 

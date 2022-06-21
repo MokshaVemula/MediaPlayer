@@ -1,8 +1,8 @@
 import React,{useState} from 'react';
-import {Text, View, StyleSheet,Image, TextInput, Pressable, Button} from 'react-native';
+import {Text, View, StyleSheet,Image, TextInput, Pressable, Button, Alert} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons'
-
+import auth from '@react-native-firebase/auth';
 
 const Login = ({navigation}) =>{
     const [email, setEmail] = useState('')
@@ -15,7 +15,6 @@ const Login = ({navigation}) =>{
           Alert.alert("Enter Password")
         }
         else{
-          setLoading(true)
           auth().signInWithEmailAndPassword(email, password).then(
             function(result){
               return(console.log(result.user))
