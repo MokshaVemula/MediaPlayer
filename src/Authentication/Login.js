@@ -3,10 +3,17 @@ import {Text, View, StyleSheet,Image, TextInput, Pressable, Button, Alert} from 
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import auth from '@react-native-firebase/auth';
+import {useSelector,useDispatch} from "react-redux";
+import {setEmail,setPassword,getUserUid} from "../redux/actions";
 
 const Login = ({navigation}) =>{
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    // const [email, setEmail] = useState('')
+    // const [password, setPassword] = useState('')
+    const dispatch =useDispatch()
+    const storeData = useSelector((state)=>state)
+    const {email,password,uid}=useSelector(state=>state.userReducer);
+
+    
 
     const signin = (email, password) => {
         if (email.length==0){
@@ -17,7 +24,10 @@ const Login = ({navigation}) =>{
         else{
           auth().signInWithEmailAndPassword(email, password).then(
             function(result){
-              return(console.log(result.user))
+              const value= result.user.uid;
+              dispatch(getUserUid(value));
+              console.log(uid);
+              console.log('..........',storeData.userReducer.uid)
             }
           ).catch(
             function(e){
@@ -55,7 +65,7 @@ const Login = ({navigation}) =>{
                                 placeholder='Enter your Email' 
                                 style={styles.input}
                                 value={email}
-                                onChangeText={setEmail}
+                                onChangeText={(value)=>dispatch(setEmail(value))}
                                 keyboardType='email-address'
                             />
                         </View>
@@ -68,7 +78,7 @@ const Login = ({navigation}) =>{
                                 placeholder='Enter your Password' 
                                 style={styles.input}
                                 value={password}
-                                onChangeText={setPassword}
+                                onChangeText={(value)=>dispatch(setPassword(value))}
                                 secureTextEntry={true}
                             />
                         </View>

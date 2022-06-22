@@ -4,6 +4,8 @@ import SplashScreen from 'react-native-splash-screen'
 import {Authentication} from "./src/Router";
 import { HomeStackNavigation } from "./src/Router";
 import PlayMusic from "./src/HomeStack/Audio/PlayMusic";
+import { Provider } from "react-redux";
+import { Store } from "./src/redux/store";
 
 const App=()=>{
 
@@ -15,8 +17,10 @@ const App=()=>{
   },)
 
   return(
- 
-      <HomeStackNavigation/>
+      <Provider store={Store}>
+          <HomeStackNavigation/>
+      </Provider>
+      //<HomeStackNavigation/>
 
   )
 }
