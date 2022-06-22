@@ -1,8 +1,9 @@
 import React,{useEffect} from "react";
 import {View,Text} from "react-native";
 import SplashScreen from 'react-native-splash-screen'
-import Authentication from "./src/Router";
-import SelectAudioOrVideo from "./src/HomeStack/Home";
+import {Authentication} from "./src/Router";
+import { HomeStackNavigation } from "./src/Router";
+import PlayMusic from "./src/HomeStack/Audio/PlayMusic";
 
 const App=()=>{
 
@@ -15,7 +16,7 @@ const App=()=>{
 
   return(
  
-      <Authentication/>
+      <HomeStackNavigation/>
 
   )
 }
