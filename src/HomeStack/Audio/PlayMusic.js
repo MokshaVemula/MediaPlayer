@@ -4,19 +4,20 @@ import { View, Text, Button, StyleSheet, Image, Pressable } from 'react-native'
 import Sound from 'react-native-sound';
 import Icon from 'react-native-vector-icons/AntDesign'
 import Icons from 'react-native-vector-icons/Feather'
-import { DATA } from './AudioList';
+// import { DATA } from './AudioList';
 
 
-const PlayMusic = () => {
-
+const PlayMusic = ({navigation,route}) => {
+  const data=route.params
   const [music, setMusic] = useState(null)
   const [second, setSecond] = useState(0)
   const [duration, setDuration] = useState(0)
   const [playIcon, setPlayIcon] = useState(true)
-  
+  console.log('playMusic',data);
 
   const play = () => {
-    let summer = new Sound("first_song.mp3",Sound.MAIN_BUNDLE,(err) => {
+    let summer = new Sound('first_song.mp3',Sound.MAIN_BUNDLE,(err) => {
+      //data.song
       if (err) {
         console.log('hata', err)
         return

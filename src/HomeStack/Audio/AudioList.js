@@ -1,23 +1,24 @@
 import React, { useState } from "react";
 import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import Sound from 'react-native-sound';
 
 const DATA = [
   {
     id: "1",
-    title: "First Song",
+    title: "first song",
     song:'first_song.mp3'
     
   },
   {
     id: "2",
-    title: "Second Song",
-    song:'first_song.mp3'
+    title: "second song",
+    song:'second_song.mp3'
   },
   {
     id: "3",
-    title: "Third Song",
-    song:'first_song.mp3'
+    title: "third song",
+    song:'third_song.mp3'
    
   },
   
@@ -36,11 +37,11 @@ const AudioList = ({navigation}) => {
   const renderItem = ({ item }) => {
     const backgroundColor = item.id === selectedId ? '#C13584' : "green";
     const color = item.id === selectedId ? 'white' : 'black';
-
+    // console.log('..........',item);
     return (
       <Item
         item={item}
-        onPress={() => {setSelectedId(item.id), navigation.navigate('PlayMusic')}}
+        onPress={() => {setSelectedId(item.id), navigation.navigate('PlayMusic',{data:item})}}
         backgroundColor={{ backgroundColor }}
         textColor={{ color }}
       />

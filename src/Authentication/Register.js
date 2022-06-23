@@ -35,6 +35,7 @@ const Register = ({navigation}) =>{
           await auth().createUserWithEmailAndPassword(email, password).then(
             function(res){
                 res.user.updateProfile({displayName:firstName+" "+lastName,phoneNumber:number})
+                console.log(navigation.goBack());
             }
         
           ).catch(
