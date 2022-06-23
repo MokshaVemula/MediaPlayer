@@ -14,7 +14,6 @@ const Login = ({navigation}) =>{
     const {email,password,uid}=useSelector(state=>state.userReducer);
 
     
-
     const signin = (email, password) => {
         if (email.length==0){
           Alert.alert("Enter Email")
@@ -24,10 +23,11 @@ const Login = ({navigation}) =>{
         else{
           auth().signInWithEmailAndPassword(email, password).then(
             function(result){
+              // console.log(uid);
               const value= result.user.uid;
               dispatch(getUserUid(value));
-              console.log(uid);
-              console.log('..........',storeData.userReducer.uid)
+              console.log('.....',value);
+              // console.log('..........',storeData.userReducer.uid)
             }
           ).catch(
             function(e){
