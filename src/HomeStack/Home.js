@@ -24,7 +24,7 @@ const SelectAudioOrVideo = ({navigation}) =>{
                         </Pressable>
                     </LinearGradient>
                     <LinearGradient colors={['purple', 'pink', 'purple', ]}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{width:'80%', borderRadius:30, marginBottom:20,height:50, paddingTop:8 }}>
-                        <Pressable style={styles.textContainer} onPress={()=>navigation.navigate('VideoList')}>
+                        <Pressable style={styles.textContainer} onPress={()=>navigation.navigate('VideoHome')}>
                             <Text style={styles.text}>Video</Text>
                         </Pressable>
                     </LinearGradient>

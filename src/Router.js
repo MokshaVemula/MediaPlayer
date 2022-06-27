@@ -6,7 +6,10 @@ import Register from "./Authentication/Register";
 import SelectAudioOrVideo from "./HomeStack/Home";
 import {AudioList} from "./HomeStack/Audio/AudioList"
 import PlayMusic from "./HomeStack/Audio/PlayMusic";
-import VideoList from "./HomeStack/Video/VideoList";
+import VideoHome from "./HomeStack/Video/VideoHome";
+import {VideoList} from "./HomeStack/Video/VideoList";
+import PlayVideo from "./HomeStack/Video/PlayVideo";
+
 
 const Authentication = () =>{
     const Stack = createNativeStackNavigator();
@@ -28,7 +31,9 @@ const HomeStackNavigation = () =>{
                 <Stack.Screen name = 'SelectAudioOrVideo' component={SelectAudioOrVideo} options={{headerShown:false}}/>
                 <Stack.Screen name = 'AudioList' component={AudioList} />
                 <Stack.Screen name='PlayMusic' component={PlayMusic}/>
+                <Stack.Screen name='VideoHome' component={VideoHome}/>
                 <Stack.Screen name='VideoList' component={VideoList}/>
+                <Stack.Screen name='PlayVideo' component={PlayVideo} />
             </Stack.Navigator>
         </NavigationContainer>
     )
