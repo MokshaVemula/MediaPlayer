@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import auth from '@react-native-firebase/auth';
 import {useSelector,useDispatch} from "react-redux";
 import {setEmail,setPassword,getUserUid} from "../redux/actions";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = ({navigation}) =>{
     // const [email, setEmail] = useState('')
@@ -27,6 +28,7 @@ const Login = ({navigation}) =>{
               const value= result.user.uid;
               dispatch(getUserUid(value));
               console.log('.....',value);
+              AsyncStorage.setItem('token', value);
               // console.log('..........',storeData.userReducer.uid)
             }
           ).catch(

@@ -8,7 +8,7 @@ import Icons from 'react-native-vector-icons/Feather'
 
 
 const PlayMusic = ({navigation,route}) => {
-  const data=route.params
+  const data=route.params.data
   const [music, setMusic] = useState(null)
   const [second, setSecond] = useState(0)
   const [duration, setDuration] = useState(0)
@@ -16,7 +16,7 @@ const PlayMusic = ({navigation,route}) => {
   console.log('playMusic',data);
 
   const play = () => {
-    let summer = new Sound('first_song.mp3',Sound.MAIN_BUNDLE,(err) => {
+    let summer = new Sound(`${data.song}`,Sound.MAIN_BUNDLE,(err) => {
       //data.song
       if (err) {
         console.log('hata', err)
