@@ -36,7 +36,7 @@ const VideoList = ({navigation}) => {
   const [selectedId, setSelectedId] = useState(null);
 
   const renderItem = ({ item }) => {
-    const backgroundColor = item.id === selectedId ? '#C13584' : "pink";
+    const backgroundColor = item.id === selectedId ? 'darkBlue' : "darkBlue";
     const color = item.id === selectedId ? 'white' : 'black';
     // console.log('..........',item);
     return (
