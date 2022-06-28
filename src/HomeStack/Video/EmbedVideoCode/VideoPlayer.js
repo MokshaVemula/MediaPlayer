@@ -4,6 +4,7 @@ import Video from 'react-native-video';
 import MediaControls,{PLAYER_STATES} from 'react-native-media-controls';
 import { useRoute } from '@react-navigation/native';
 import YouTube from 'react-native-youtube';
+import YoutubePlayer from 'react-native-youtube-iframe';
 // import YoutubePlayer from 'react-native-youtube-iframe';
 // import WebView from 'react-native-webview';
 
@@ -76,6 +77,13 @@ const Player = () => {
 
   return (
     <View style={{flex:1}}>
+
+        <YoutubePlayer
+            height={300}
+            play={true}
+            videoId={route.params.copiedVideoUrl}
+        />
+
         {/* <YouTube
             videoId="KVZ-P-ZI6W4" // The YouTube video ID
             play // control playback of video with true/false
@@ -87,7 +95,7 @@ const Player = () => {
             onError={e => this.setState({ error: e.error })}
             style={{ alignSelf: 'stretch', height: 300 }}
             /> */}
-        <Video
+        {/* <Video
          onEnd={onEnd}
          onLoad={onLoad}
          onLoadStart={onLoadStart}
@@ -114,6 +122,8 @@ const Player = () => {
          progress={currentTime}
          toolbar={renderToolbar()}
         />
+         */}
+
         
 
     </View>
