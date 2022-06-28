@@ -76,7 +76,7 @@ const Player = () => {
     const onSeeking=(currentTime)=>setCurrentTime(currentTime);
 
   return (
-    <View style={{flex:1}}>
+    <View style={{flex:1,marginTop:200}}>
 
         <YoutubePlayer
             height={300}
