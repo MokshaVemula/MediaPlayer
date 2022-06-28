@@ -7,21 +7,22 @@ const DATA = [
   {
     id: "1",
     title: "first Video",
-    song:'video.mp4'
-    
+    video:require('../../asserts/video.mp4')
+    //'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
   },
   {
     id: "2",
     title: "second Video",
-    song:'video.mp4'
+    video:require('../../asserts/video_2.mp4')
+    //'https://static.videezy.com/system/resources/previews/000/008/139/original/Flat_Walking_Background.mp4'
   },
   {
     id: "3",
     title: "third Video",
-    song:'video.mp4'
+    video:require('../../asserts/video3.mp4')
+    //'https://static.videezy.com/system/resources/previews/000/022/005/original/cartoon-seamless-rural-landscape-footage.mp4'
    
   },
-  
 ];
 
 const Item = ({ item, onPress, backgroundColor, textColor, }) => (

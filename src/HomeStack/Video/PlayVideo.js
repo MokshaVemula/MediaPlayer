@@ -11,14 +11,14 @@ import Video from 'react-native-video';
 const PlayVideo = ({navigation,route}) => {
   const data=route.params.data
     console.log('....',data);
-  console.log('playVideo',data.song);
+  console.log('playVideo',data.video);
 
   //require('../../asserts/video.mp4')  ${data.song} ${data.song}`
   
   return (
     <View style={styles.container}>
         <Text>Video Playing</Text>
-        <Video source={require('../../asserts/video.mp4')} style={{height:'100%',width:'100%'}}
+        <Video source={data.video} style={{height:'100%',width:'100%'}}
             controls={true}
             audioOnly={true}
             resizeMode="contain"
