@@ -25,7 +25,7 @@ const DATA = [
 ];
 
 const Item = ({ item, onPress, backgroundColor, textColor, }) => (
-  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
+  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor,{alignItems:'center'}]}>
     <Text style={[styles.title, textColor]}>{item.title}</Text>
     
   </TouchableOpacity>
