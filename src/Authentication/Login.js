@@ -42,7 +42,7 @@ const Login = ({navigation}) =>{
     
               }
               else{
-                return(console.log(e.message),Alert.alert(e.mesage))
+                return(console.log(e.message),Alert.alert(e.code))
               }
              
             });
