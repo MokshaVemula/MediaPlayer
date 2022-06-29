@@ -5,6 +5,7 @@ import Sound from 'react-native-sound';
 import Icon from 'react-native-vector-icons/AntDesign'
 import Icons from 'react-native-vector-icons/Feather'
 import Icon5 from 'react-native-vector-icons/FontAwesome5'
+import LinearGradient from 'react-native-linear-gradient';
 // import { DATA } from './AudioList';
 
 
@@ -57,8 +58,9 @@ const PlayMusic = ({navigation,route}) => {
   
 
   return (
-    
-    <View style={[styles.container,{backgroundColor:'purple'}]}>
+    //style={[styles.container,{backgroundColor:'purple'}]}
+    <View style={styles.container}>
+      <LinearGradient colors={['yellow', 'purple',  ]}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={[styles.container,{flex:1,height:'100%',width:'100%' }]}>
         <Image source={require('../../asserts/music.jpg')} style={styles.logoIcon}/>
         <View style={{marginTop:20, flexDirection:'row'}}>
             <Pressable onPress={() => { setVolume('+') }} style={{marginRight:30}}>
@@ -80,9 +82,6 @@ const PlayMusic = ({navigation,route}) => {
             </Pressable>
             
         </View>
-
-        
-        
         
         <View style={{margin:10, borderRadius:10,}}>
           <Button title="setCurrentTime" onPress={() => { music.setCurrentTime(100) }} />
@@ -96,7 +95,7 @@ const PlayMusic = ({navigation,route}) => {
           <Text style={{color:'black', fontWeight:'bold', fontSize:18}}>{second}  / Total Second {duration}</Text>
         </View>
 
-        
+      </LinearGradient>
     </View>
 
     // <View>

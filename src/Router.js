@@ -30,13 +30,13 @@ const HomeStackNavigation = () =>{
         <NavigationContainer>
             <Stack.Navigator >
                 <Stack.Screen name='SelectAudioOrVideo' component={SelectAudioOrVideo} options={{headerShown:false}}/>
-                <Stack.Screen name='AudioList' component={AudioList} />
+                <Stack.Screen name='AudioList' component={AudioList} options={{headerStyle:{backgroundColor:'grey',},headerTintColor:'white', headerTitleStyle:{fontWeight:'bold'}}}/>
                 <Stack.Screen name='PlayMusic' component={PlayMusic}/>
                 <Stack.Screen name='VideoHome' component={VideoHome}/>
                 <Stack.Screen name='VideoList' component={VideoList}/>
                 <Stack.Screen name='PlayVideo' component={PlayVideo} />
-                <Stack.Screen name='EmbedVideoCode' component={EmbedVideoCode} />
-                <Stack.Screen name='Player' component={Player} />
+                <Stack.Screen name='EmbedVideoCode' component={EmbedVideoCode} options={{headerStyle:{backgroundColor:'grey',},headerTintColor:'white', headerTitleStyle:{fontWeight:'bold'}}}/>
+                <Stack.Screen name='Player' component={Player} options={{headerStyle:{backgroundColor:'grey',},headerTintColor:'white', headerTitleStyle:{fontWeight:'bold'}}}/>
 
             </Stack.Navigator>
         </NavigationContainer>
