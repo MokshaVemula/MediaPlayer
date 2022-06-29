@@ -46,9 +46,9 @@ const EmbedVideoCode=({navigation})=>{
                     </View>
                     
                     <View style={{marginTop:20,flexDirection:'row'}}>
-                        <TouchableOpacity style={styles.button} onPress={() => copyToClipboard()}>
+                        {/* <TouchableOpacity style={styles.button} onPress={() => copyToClipboard()}>
                           <Text style={{color:"white",fontWeight: 'bold'}}>CopyClipboard</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                         <TouchableOpacity style={styles.button} onPress={() => fetchCopiedText()}>
                           <Text style={{color:"white",fontWeight: 'bold'}}>Past</Text>
                         </TouchableOpacity>
