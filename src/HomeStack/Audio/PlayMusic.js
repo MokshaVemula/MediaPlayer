@@ -4,6 +4,7 @@ import { View, Text, Button, StyleSheet, Image, Pressable } from 'react-native'
 import Sound from 'react-native-sound';
 import Icon from 'react-native-vector-icons/AntDesign'
 import Icons from 'react-native-vector-icons/Feather'
+import Icon5 from 'react-native-vector-icons/FontAwesome5'
 // import { DATA } from './AudioList';
 
 
@@ -57,9 +58,12 @@ const PlayMusic = ({navigation,route}) => {
 
   return (
     
-    <View style={styles.container}>
+    <View style={[styles.container,{backgroundColor:'purple'}]}>
         <Image source={require('../../asserts/music.jpg')} style={styles.logoIcon}/>
         <View style={{marginTop:20, flexDirection:'row'}}>
+            <Pressable onPress={() => { setVolume('+') }} style={{marginRight:30}}>
+              <Icon5  name='volume-up' size={34} style={{paddingLeft:20, color:'white'}}/>
+            </Pressable>
             {playIcon?
               <Pressable onPress={()=>play()}>
                   <Icon name='playcircleo' size={34} style={{paddingLeft:20, color:'black'}}/>
@@ -71,20 +75,21 @@ const PlayMusic = ({navigation,route}) => {
             <Pressable onPress={() => { music.stop() }}>
                   <Icons name='stop-circle' size={34} style={{paddingLeft:20, color:'black'}}/>
             </Pressable>
+            <Pressable onPress={() => { setVolume("-")}} style={{marginLeft:40}}>
+              <Icon5  name='volume-down' size={34} style={{paddingRight:10, color:'white'}}/>
+            </Pressable>
             
         </View>
-        <View style={{margin:10, borderRadius:10,}}>
-          <Button title="setVolume high" onPress={() => { setVolume('+') }} />
-        </View>
-        <View style={{margin:10, borderRadius:10,}}> 
-          <Button title="setVolume Low" onPress={() => { setVolume("-") }} />
-        </View>
+
+        
+        
+        
         <View style={{margin:10, borderRadius:10,}}>
           <Button title="setCurrentTime" onPress={() => { music.setCurrentTime(100) }} />
         </View >
             
-        <View style={{margin:10, borderRadius:10,}}>
-          <Button title="isPlaying" onPress={() => { console.log(music.isPlaying()) }} />
+        <View style={{margin:10, borderRadius:10}}>
+          <Button title="isPlaying" onPress={() => { console.log(music.isPlaying())}} />
         </View>
 
         <View>
@@ -122,6 +127,7 @@ styles = StyleSheet.create({
         flex:1,
         justifyContent:'center',
         alignItems:'center'
+        
     },
     logoIcon:{
         width:300,
