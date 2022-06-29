@@ -6,19 +6,32 @@ import LinearGradient from "react-native-linear-gradient";
 const DATA = [
   {
     id: "1",
-    title: "first Video",
+    title: "First Video",
     video:require('../../asserts/video.mp4')
     //'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
   },
   {
     id: "2",
-    title: "second Video",
+    title: "Second Video",
     video:require('../../asserts/video_2.mp4')
     //'https://static.videezy.com/system/resources/previews/000/008/139/original/Flat_Walking_Background.mp4'
   },
   {
     id: "3",
-    title: "third Video",
+    title: "Third Video",
+    video:require('../../asserts/video3.mp4')
+    //'https://static.videezy.com/system/resources/previews/000/022/005/original/cartoon-seamless-rural-landscape-footage.mp4'
+   
+  },
+  {
+    id: "4",
+    title: "Forth Video",
+    video:require('../../asserts/video_2.mp4')
+    //'https://static.videezy.com/system/resources/previews/000/008/139/original/Flat_Walking_Background.mp4'
+  },
+  {
+    id: "5",
+    title: "Fifth Video",
     video:require('../../asserts/video3.mp4')
     //'https://static.videezy.com/system/resources/previews/000/022/005/original/cartoon-seamless-rural-landscape-footage.mp4'
    
@@ -36,8 +49,8 @@ const VideoList = ({navigation}) => {
   const [selectedId, setSelectedId] = useState(null);
 
   const renderItem = ({ item }) => {
-    const backgroundColor = item.id === selectedId ? 'darkBlue' : "darkBlue";
-    const color = item.id === selectedId ? 'white' : 'black';
+    const backgroundColor = item.id === selectedId ? 'darkblue' : "purple";
+    const color = item.id === selectedId ? 'black' : 'white';
     // console.log('..........',item);
     return (
       <Item
@@ -53,7 +66,7 @@ const VideoList = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <LinearGradient colors={['darkblue', 'skyblue', 'darkblue', ]}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{flex:1, }}>
+      <LinearGradient colors={['skyblue', 'purple', ]}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{flex:1, }}>
         <FlatList
           data={DATA}
           renderItem={renderItem}
@@ -78,8 +91,8 @@ const styles = StyleSheet.create({
     
   },
   item: {
-    padding: 20,
-    marginVertical: 8,
+    padding: 8,
+    marginVertical: 15,
     marginHorizontal: 16,
     borderRadius:50,
     

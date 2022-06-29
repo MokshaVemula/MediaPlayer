@@ -21,6 +21,18 @@ const DATA = [
     song:'third_song.mp3'
    
   },
+  {
+    id: "4",
+    title: "fourth song",
+    song:'first_song.mp3'
+    
+  },
+  {
+    id: "5",
+    title: "fifth song",
+    song:'second_song.mp3'
+  },
+  
   
 ];
 
@@ -35,8 +47,8 @@ const AudioList = ({navigation}) => {
   const [selectedId, setSelectedId] = useState(null);
 
   const renderItem = ({ item }) => {
-    const backgroundColor = item.id === selectedId ? '#C13584' : "darkBlue";
-    const color = item.id === selectedId ? 'white' : 'black';
+    const backgroundColor = item.id === selectedId ? 'darkBlue' : "purple";
+    const color = item.id === selectedId ? 'black' : 'white';
     // console.log('..........',item);
     return (
       <Item
@@ -52,7 +64,7 @@ const AudioList = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <LinearGradient colors={['darkblue', 'skyblue', 'darkblue', ]}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{flex:1, }}>
+      <LinearGradient colors={['skyblue', 'purple',  ]}  start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }} style={{flex:1, }}>
         <FlatList
           data={DATA}
           renderItem={renderItem}
@@ -73,12 +85,13 @@ const styles = StyleSheet.create({
     flex: 1,
     //marginTop: StatusBar.currentHeight || 0,
     justifyContent:"center",
+    
     //backgroundColor:'blue'
     
   },
   item: {
-    padding: 20,
-    marginVertical: 8,
+    padding: 8,
+    marginVertical: 15,
     marginHorizontal: 16,
     borderRadius:50,
     

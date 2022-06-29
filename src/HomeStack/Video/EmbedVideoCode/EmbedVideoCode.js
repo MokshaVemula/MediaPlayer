@@ -19,11 +19,11 @@ const EmbedVideoCode=({navigation})=>{
         const text = await Clipboard.getString()
         setCopiedVideoUrl(text)
       }
-
+//#000428
     return(
         <View style={styles.container}>
             <LinearGradient
-                colors={['#000428', '#004e92']}
+                colors={['skyblue', 'purple']}
                 style={styles.linearGradient}
                 start={{x: 0, y: 0}}
                 end={{x: 1, y: 1}}>
