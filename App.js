@@ -29,7 +29,7 @@ const AppWrapper=()=>{
   useEffect(()=>{
     setTimeout(()=>{
       SplashScreen.hide()
-    },1000)
+    },6000)
 
   },)
 
