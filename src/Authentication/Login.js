@@ -25,6 +25,7 @@ const Login = ({navigation}) =>{
           auth().signInWithEmailAndPassword(email, password).then(
             function(result){
               // console.log(uid);
+              console.log(result.user);
               const value= result.user.uid;
               dispatch(getUserUid(value));
               console.log('.....',value);
