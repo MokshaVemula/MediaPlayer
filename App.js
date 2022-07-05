@@ -6,26 +6,20 @@ import { HomeStackNavigation } from "./src/Router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Provider } from "react-redux";
 import {useSelector,useDispatch} from "react-redux";
-import { Store } from "./src/redux/store";
+import { store } from "./src/redux/store";
 import { getToken } from "./src/redux/actions";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistor } from "./src/redux/store";
 
 const AppWrapper=()=>{
   const storeData = useSelector((state)=>state)
-  const token = storeData.userReducer.token;
+  
   const uid = storeData.userReducer.uid
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    getData();
-  });
+  
 
-  const getData = async () => {
-    const val = await AsyncStorage.getItem('token');
-    if (val !== '') {
-      dispatch(getToken(val));
-    }
-  };
-
+  
   useEffect(()=>{
     setTimeout(()=>{
       SplashScreen.hide()
@@ -33,7 +27,7 @@ const AppWrapper=()=>{
 
   },)
 
-  if (token){
+  if (uid){
     return(
       <HomeStackNavigation/>
     )  
@@ -48,8 +42,11 @@ const AppWrapper=()=>{
 const App = () => {
 
   return (
-    <Provider store={Store}>
-      <AppWrapper />
+    <Provider store={store}>
+      <PersistGate loading={<Text>Loading</Text>} persistor={persistor}>
+        <AppWrapper />
+      </PersistGate>
+      
     </Provider>
   )
 }

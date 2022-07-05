@@ -3,9 +3,10 @@ import {Text, View, StyleSheet,Image, TextInput, Pressable, Button, Alert} from 
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import auth from '@react-native-firebase/auth';
-import {useSelector,useDispatch} from "react-redux";
+import {useSelector,useDispatch, Provider} from "react-redux";
 import {setEmail,setPassword,getUserUid} from "../redux/actions";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { store } from '../redux/store';
 
 const Login = ({navigation}) =>{
     // const [email, setEmail] = useState('')
@@ -29,7 +30,7 @@ const Login = ({navigation}) =>{
               const value= result.user.uid;
               dispatch(getUserUid(value));
               console.log('.....',value);
-              AsyncStorage.setItem('token', value);
+              
               // console.log('..........',storeData.userReducer.uid)
             }
           ).catch(
@@ -52,6 +53,9 @@ const Login = ({navigation}) =>{
         
         
     return(
+      <Provider store={store}>
+
+      
         <View style = {styles.container} >
             <LinearGradient colors={['red', 'yellow', 'green' ]} style={styles.linearGradient} start={{ x: 0, y: 0 }} end={{x: 1, y: 1 }}>
                 <View style={[styles.Iconcontainer,{alignItems:'center',justifyContent:'center'}]}>
@@ -99,6 +103,7 @@ const Login = ({navigation}) =>{
                 </View>
             </LinearGradient>
         </View>
+      </Provider>
     )
 }
 

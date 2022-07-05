@@ -5,13 +5,13 @@ import { color } from "react-native-reanimated";
 import { useDispatch} from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { removeToken } from "../redux/actions";
+import { getUserUid } from "../redux/actions";
 
 const SelectAudioOrVideo = ({navigation}) =>{
     const dispatch = useDispatch();
 
     function signOut(){
-        const val = AsyncStorage.removeItem('token');
-        dispatch(removeToken(val));
+        dispatch(getUserUid(''));
     }
 
     return(
